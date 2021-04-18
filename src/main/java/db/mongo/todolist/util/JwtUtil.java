@@ -18,7 +18,7 @@ public class JwtUtil {
 
     private static String jwtSecret = "MyNameIsKhan";
 
-    private static int jwtExpirationMs = 3600000;
+    private static int jwtExpirationMs = 6000;
 
     public String extractUsername(String token) throws Exception {
         return extractClaim(token, Claims::getSubject);

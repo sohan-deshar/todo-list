@@ -1,13 +1,12 @@
 package db.mongo.todolist.filters;
 
+import com.google.gson.Gson;
 import db.mongo.todolist.util.JwtUtil;
-import io.jsonwebtoken.Jwt;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,20 +43,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String username = null;
         String jwt = null;
 
-        if(authHeader != null && authHeader.startsWith("Bearer ")){
-            jwt = authHeader.substring(7);
-            try{
+
+        try {
+            if(authHeader != null && authHeader.startsWith("Bearer ")) {
+                jwt = authHeader.substring(7);
                 username = jwtUtil.extractUsername(jwt);
-            } catch (Exception e){
-                log.error(e.getMessage());
             }
-        }
-
-        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-
-            try {
-                if(jwtUtil.validateToken(jwt , userDetails, request)){
+            if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+                if (jwtUtil.validateToken(jwt, userDetails, request)) {
                     UsernamePasswordAuthenticationToken UAPtoken =
                             new UsernamePasswordAuthenticationToken(
                                     userDetails, null, userDetails.getAuthorities()
@@ -65,9 +59,22 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                     UAPtoken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(UAPtoken);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+        } catch (Exception e) {
+            GenericErrorResponse genericErrorResponse = new GenericErrorResponse(e.getMessage());
+            String json = new Gson().toJson(genericErrorResponse);
+            log.error(e.getMessage());
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
+            response.getWriter().flush();
+
+//            log.error(e.getMessage());
+//            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+//            response.getWriter().write(e.getMessage());
+//            response.getWriter().flush();
+            return;
         }
         filterChain.doFilter(request, response);
     }
