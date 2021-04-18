@@ -8,8 +8,9 @@ import db.mongo.todolist.models.transferobjs.UserTO;
 import db.mongo.todolist.services.interfaces.RoleService;
 import db.mongo.todolist.services.interfaces.UserService;
 
-import lombok.extern.slf4j.Slf4j;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -18,11 +19,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
 @RestController
 @CrossOrigin(value = "http://localhost:4200")
 @RequestMapping(value = "/user")
 public class UserController {
+
+    Logger log = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
     private final RoleService roleService;
@@ -37,11 +39,11 @@ public class UserController {
 
     @PostMapping(value = "/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authRequest) throws Exception{
-        try{
-            return ResponseEntity.ok(this.userService.authenticateUser(authRequest));
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-        }
+        return ResponseEntity.ok(this.userService.authenticateUser(authRequest));
+//        try{
+//        } catch (Exception e){
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+//        }
     }
 
 
@@ -53,32 +55,38 @@ public class UserController {
 
     @GetMapping( "/show/{username}")
     public ResponseEntity<?> findByUsername(@PathVariable String username){
-        try{
-            return ResponseEntity.ok(this.userService.getUserTO(username));
+        return ResponseEntity.ok(this.userService.getUserTO(username));
+        /*try{
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
+        }*/
     }
 
     @PostMapping(value = "/signup")
-    public ResponseEntity<?> addNewUser(@RequestBody SignUpRequest signUpRequest){
-        try{
-            return ResponseEntity.ok(this.userService.addNewUser(signUpRequest));
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
-        }
+    public ResponseEntity<?> addNewUser(@RequestBody SignUpRequest signUpRequest) throws Exception {
+        return ResponseEntity.ok(this.userService.addNewUser(signUpRequest));
+//        try{
+//        } catch (Exception e){
+//            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
+//        }
     }
 
 
     @DeleteMapping(value = "/deleteUser/{username}")
-    public ResponseEntity<?> deleteUserByUsername(@PathVariable(value = "username") String username){
-        try{
-            this.userService.deleteByUsername(username);
-            return new ResponseEntity<>(username + " has been deleted from DB", HttpStatus.ACCEPTED);
-        } catch (UnfinishedTodosException e) {
-            return new ResponseEntity<>(username + " still has some unfinished business " + e.getMessage(), HttpStatus.CONFLICT);
-        } catch (UsernameNotFoundException e) {
-            return new ResponseEntity<>(username + " not found in the database " + e.getMessage(), HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<?> deleteUserByUsername(@PathVariable(value = "username") String username) throws UsernameNotFoundException, UnfinishedTodosException {
+        this.userService.deleteByUsername(username);
+        return new ResponseEntity<>(username + " has been deleted from DB", HttpStatus.ACCEPTED);
+//        try{
+//        } catch (UnfinishedTodosException e) {
+//            return new ResponseEntity<>(username + " still has some unfinished business " + e.getMessage(), HttpStatus.CONFLICT);
+//        } catch (UsernameNotFoundException e) {
+//            return new ResponseEntity<>(username + " not found in the database " + e.getMessage(), HttpStatus.NOT_FOUND);
+//        }
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> exceptionHandler(Exception e){
+        log.error(String.valueOf(e.getStackTrace()));
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 }

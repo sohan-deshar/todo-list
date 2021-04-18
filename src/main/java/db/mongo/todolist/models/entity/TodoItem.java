@@ -18,7 +18,7 @@ public class TodoItem {
     private String todoType;
     private String dueDate;
 
-    private Boolean finished;
+    private Boolean finished = false;
 
     public TodoItem() {
     }
