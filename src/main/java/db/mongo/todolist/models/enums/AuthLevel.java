@@ -1,4 +1,4 @@
-package db.mongo.todolist.models;
+package db.mongo.todolist.models.enums;
 
 public enum AuthLevel {
     ROOT,

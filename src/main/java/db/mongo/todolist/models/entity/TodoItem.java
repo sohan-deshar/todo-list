@@ -1,5 +1,7 @@
-package db.mongo.todolist.models;
+package db.mongo.todolist.models.entity;
 
+import db.mongo.todolist.models.entity.Category;
+import db.mongo.todolist.models.transferobjs.TodoItemTO;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Random;

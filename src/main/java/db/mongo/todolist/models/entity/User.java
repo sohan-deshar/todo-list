@@ -1,4 +1,4 @@
-package db.mongo.todolist.models;
+package db.mongo.todolist.models.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

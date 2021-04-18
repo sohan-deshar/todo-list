@@ -1,7 +1,8 @@
-package db.mongo.todolist.filters;
+package db.mongo.todolist.securityconfigs.filters;
 
 import com.google.gson.Gson;
-import db.mongo.todolist.util.JwtUtil;
+import db.mongo.todolist.models.transferobjs.GenericErrorResponse;
+import db.mongo.todolist.utils.JwtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

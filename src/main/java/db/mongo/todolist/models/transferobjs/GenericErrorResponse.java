@@ -1,4 +1,4 @@
-package db.mongo.todolist.filters;
+package db.mongo.todolist.models.transferobjs;
 
 import java.util.Date;
 

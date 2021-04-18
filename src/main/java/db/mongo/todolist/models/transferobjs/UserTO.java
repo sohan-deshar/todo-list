@@ -1,4 +1,4 @@
-package db.mongo.todolist.models;
+package db.mongo.todolist.models.transferobjs;
 
 public class UserTO {
 

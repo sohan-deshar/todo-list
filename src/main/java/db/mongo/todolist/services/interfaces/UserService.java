@@ -3,7 +3,9 @@ package db.mongo.todolist.services.interfaces;
 import db.mongo.todolist.exceptions.NoTodoItemsException;
 import db.mongo.todolist.exceptions.UnfinishedTodosException;
 import db.mongo.todolist.exceptions.UsernameNotFoundException;
-import db.mongo.todolist.models.*;
+import db.mongo.todolist.models.entity.TodoItem;
+import db.mongo.todolist.models.entity.User;
+import db.mongo.todolist.models.transferobjs.*;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package db.mongo.todolist.services.interfaces;
 
-import db.mongo.todolist.models.AuthLevel;
-import db.mongo.todolist.models.Role;
+import db.mongo.todolist.models.enums.AuthLevel;
+import db.mongo.todolist.models.entity.Role;
 
 import java.util.Optional;
 

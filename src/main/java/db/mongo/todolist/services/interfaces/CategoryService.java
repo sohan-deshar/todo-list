@@ -1,6 +1,6 @@
 package db.mongo.todolist.services.interfaces;
 
-import db.mongo.todolist.models.Category;
+import db.mongo.todolist.models.entity.Category;
 
 import java.util.List;
 

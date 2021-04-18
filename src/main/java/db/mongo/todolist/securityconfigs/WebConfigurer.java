@@ -1,7 +1,6 @@
-package db.mongo.todolist.configs;
+package db.mongo.todolist.securityconfigs;
 
-import db.mongo.todolist.filters.JwtRequestFilter;
-import org.springframework.beans.factory.annotation.Autowired;
+import db.mongo.todolist.securityconfigs.filters.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;

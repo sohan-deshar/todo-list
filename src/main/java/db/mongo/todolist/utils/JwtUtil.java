@@ -1,4 +1,4 @@
-package db.mongo.todolist.util;
+package db.mongo.todolist.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

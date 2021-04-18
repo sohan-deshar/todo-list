@@ -1,15 +1,18 @@
 package db.mongo.todolist.services.implementation;
 
-import db.mongo.todolist.converter.TodoConverter;
-import db.mongo.todolist.converter.UserConverter;
+import db.mongo.todolist.models.entity.Role;
+import db.mongo.todolist.models.entity.TodoItem;
+import db.mongo.todolist.models.entity.User;
+import db.mongo.todolist.models.transferobjs.*;
+import db.mongo.todolist.models.transferobjs.converters.TodoConverter;
+import db.mongo.todolist.models.transferobjs.converters.UserConverter;
 import db.mongo.todolist.exceptions.NoTodoItemsException;
 import db.mongo.todolist.exceptions.UnfinishedTodosException;
 import db.mongo.todolist.exceptions.UsernameNotFoundException;
-import db.mongo.todolist.models.*;
 import db.mongo.todolist.repositories.UserRepository;
 import db.mongo.todolist.services.interfaces.RoleService;
 import db.mongo.todolist.services.interfaces.UserService;
-import db.mongo.todolist.util.JwtUtil;
+import db.mongo.todolist.utils.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,7 +26,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static db.mongo.todolist.models.AuthLevel.USER;
+import static db.mongo.todolist.models.enums.AuthLevel.USER;
 
 @Service
 public class UserServiceImpl implements UserService {

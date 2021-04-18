@@ -1,8 +1,8 @@
-package db.mongo.todolist.configs.services;
+package db.mongo.todolist.securityconfigs.services;
 
-import db.mongo.todolist.models.AuthLevel;
-import db.mongo.todolist.models.Role;
-import db.mongo.todolist.models.User;
+import db.mongo.todolist.models.enums.AuthLevel;
+import db.mongo.todolist.models.entity.Role;
+import db.mongo.todolist.models.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

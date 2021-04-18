@@ -1,7 +1,7 @@
 package db.mongo.todolist.controllers;
 
-import db.mongo.todolist.models.Category;
-import db.mongo.todolist.models.CategoryTO;
+import db.mongo.todolist.models.entity.Category;
+import db.mongo.todolist.models.transferobjs.CategoryTO;
 import db.mongo.todolist.services.interfaces.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

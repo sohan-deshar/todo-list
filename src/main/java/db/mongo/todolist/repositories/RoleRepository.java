@@ -1,7 +1,7 @@
 package db.mongo.todolist.repositories;
 
-import db.mongo.todolist.models.AuthLevel;
-import db.mongo.todolist.models.Role;
+import db.mongo.todolist.models.enums.AuthLevel;
+import db.mongo.todolist.models.entity.Role;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

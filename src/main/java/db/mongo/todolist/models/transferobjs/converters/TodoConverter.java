@@ -1,8 +1,8 @@
-package db.mongo.todolist.converter;
+package db.mongo.todolist.models.transferobjs.converters;
 
-import db.mongo.todolist.models.Category;
-import db.mongo.todolist.models.TodoItem;
-import db.mongo.todolist.models.TodoItemTO;
+import db.mongo.todolist.models.entity.Category;
+import db.mongo.todolist.models.entity.TodoItem;
+import db.mongo.todolist.models.transferobjs.TodoItemTO;
 import db.mongo.todolist.services.interfaces.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

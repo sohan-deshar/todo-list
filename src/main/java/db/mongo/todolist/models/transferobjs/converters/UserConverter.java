@@ -1,9 +1,9 @@
-package db.mongo.todolist.converter;
+package db.mongo.todolist.models.transferobjs.converters;
 
-import db.mongo.todolist.models.AuthLevel;
-import db.mongo.todolist.models.Role;
-import db.mongo.todolist.models.User;
-import db.mongo.todolist.models.UserTO;
+import db.mongo.todolist.models.enums.AuthLevel;
+import db.mongo.todolist.models.entity.Role;
+import db.mongo.todolist.models.entity.User;
+import db.mongo.todolist.models.transferobjs.UserTO;
 import org.springframework.stereotype.Component;
 
 @Component

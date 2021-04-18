@@ -1,8 +1,7 @@
-package db.mongo.todolist.configs.services;
+package db.mongo.todolist.securityconfigs.services;
 
-import db.mongo.todolist.models.User;
+import db.mongo.todolist.models.entity.User;
 import db.mongo.todolist.services.interfaces.UserService;
-import lombok.SneakyThrows;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -1,6 +1,6 @@
 package db.mongo.todolist.repositories;
 
-import db.mongo.todolist.models.User;
+import db.mongo.todolist.models.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -2,7 +2,9 @@ package db.mongo.todolist.controllers;
 
 import db.mongo.todolist.exceptions.UnfinishedTodosException;
 import db.mongo.todolist.exceptions.UsernameNotFoundException;
-import db.mongo.todolist.models.*;
+import db.mongo.todolist.models.transferobjs.AuthenticationRequest;
+import db.mongo.todolist.models.transferobjs.SignUpRequest;
+import db.mongo.todolist.models.transferobjs.UserTO;
 import db.mongo.todolist.services.interfaces.RoleService;
 import db.mongo.todolist.services.interfaces.UserService;
 

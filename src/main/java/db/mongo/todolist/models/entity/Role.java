@@ -1,5 +1,6 @@
-package db.mongo.todolist.models;
+package db.mongo.todolist.models.entity;
 
+import db.mongo.todolist.models.enums.AuthLevel;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

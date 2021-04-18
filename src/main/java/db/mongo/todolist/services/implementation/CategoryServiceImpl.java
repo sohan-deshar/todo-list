@@ -1,6 +1,6 @@
 package db.mongo.todolist.services.implementation;
 
-import db.mongo.todolist.models.Category;
+import db.mongo.todolist.models.entity.Category;
 import db.mongo.todolist.repositories.CategoryRepository;
 import db.mongo.todolist.services.interfaces.CategoryService;
 import org.springframework.stereotype.Service;

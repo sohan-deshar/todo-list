@@ -2,7 +2,7 @@ package db.mongo.todolist.controllers;
 
 import db.mongo.todolist.exceptions.NoTodoItemsException;
 import db.mongo.todolist.exceptions.UsernameNotFoundException;
-import db.mongo.todolist.models.TodoItemTO;
+import db.mongo.todolist.models.transferobjs.TodoItemTO;
 import db.mongo.todolist.services.interfaces.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
